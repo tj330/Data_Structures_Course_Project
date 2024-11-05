@@ -40,7 +40,7 @@ void pop() {
 void sDisplay() {
     if (top == -1) {
     	printf("\tHistory is empty\n");
-		return;
+	return;
     }
     printf("\tCompleted tasks: \n\n");
 
@@ -52,34 +52,34 @@ void sDisplay() {
 void enqueue(char item[], int priority) {
     if (front == -1) {
     	front = rear = 0;
-		strcpy(pq[rear].item, item);
-		pq[rear].priority = priority;
+	strcpy(pq[rear].item, item);
+	pq[rear].priority = priority;
     }
     else {
-		if (rear == size-1) {
-			for (i=front; i<=rear; i++) {
-				pq[i-1] = pq[i];
-			}
-			rear--;
-			front--;
-		}
+	if (rear == size-1) {
+	    for (i=front; i<=rear; i++) {
+		pq[i-1] = pq[i];
+	    }
+	    rear--;
+	    front--;
+	}
 
-		for (i=rear; i>=front; i--) {
-			if (pq[i].priority < priority) {
-				break;
-			}
-		}
+	for (i=rear; i>=front; i--) {
+	    if (pq[i].priority < priority) {
+	        break;
+	    }
+        }
 
 
-		loc = i + 1;
+	loc = i + 1;
 
-		for (i=rear; i>=loc; i--) {
-			pq[i+1] = pq[i];
-		}
+	for (i=rear; i>=loc; i--) {
+	    pq[i+1] = pq[i];
+	}
 
-		strcpy(pq[loc].item, item);
-		pq[loc].priority = priority;
-		rear++;
+	strcpy(pq[loc].item, item);
+	pq[loc].priority = priority;
+	rear++;
     }
 }
 
@@ -89,17 +89,17 @@ void dequeue() {
     }
     
     else if (front == rear) {
-		char* date = getDate();
-		push(pq[front].item, date);
-		printf("\tTask %s completed\n",pq[front].item);
+	char* date = getDate();
+	push(pq[front].item, date);
+	printf("\tTask %s completed\n",pq[front].item);
     	front = -1;
-		rear = -1;
+	rear = -1;
     }
 
     else {
-		char* date = getDate();
-		push(pq[front].item, date);
-		printf("\tTask %s completed\n",pq[front].item);
+	char* date = getDate();
+	push(pq[front].item, date);
+	printf("\tTask %s completed\n",pq[front].item);
     	front++;
     }
 }
@@ -110,8 +110,8 @@ void display() {
     }
     else {
     	for (i=front; i<=rear; i++) {
-	    	printf("%s (priority:%d)\n", pq[i].item, pq[i].priority);
-		}
+	    printf("%s (priority:%d)\n", pq[i].item, pq[i].priority);
+	}
     }
 }
 
@@ -133,43 +133,43 @@ void main() {
     	scanf("%d", &ch);
 	switch(ch) {
 	    case 1:
-			printf("Enter the task: ");
-			getchar();
-			fgets(i, sizeof(i), stdin);
-			size_t len = strcspn(i, "\n");
-			i[len] = '\0';		
-			printf("Enter the priority: ");
-			scanf("%d", &priority);
-			enqueue(i, priority);
-			printf("\n\nTask added succesfully\n");
-			break;
+		printf("Enter the task: ");
+		getchar();
+		fgets(i, sizeof(i), stdin);
+		size_t len = strcspn(i, "\n");
+		i[len] = '\0';		
+		printf("Enter the priority: ");
+		scanf("%d", &priority);
+		enqueue(i, priority);
+		printf("\n\nTask added succesfully\n");
+		break;
 	    case 2:
-			printf("\n##############################################\n\n");
-			printf("\tIncomplete tasks: \n\n");
-			display();
-			printf("\n##############################################\n");
-			break;
+		printf("\n##############################################\n\n");
+		printf("\tIncomplete tasks: \n\n");
+		display();
+		printf("\n##############################################\n");
+		break;
 	    case 3:
-			printf("\n################################################################\n\n");
-			dequeue();
-			printf("\n################################################################\n");
-			break;
+		printf("\n################################################################\n\n");
+		dequeue();
+		printf("\n################################################################\n");
+		break;
 	    case 4:
-			printf("\n#####################################################################################\n\n");
-			sDisplay();
-			printf("\n#####################################################################################\n");
-			break;
+		printf("\n#####################################################################################\n\n");
+		sDisplay();
+		printf("\n#####################################################################################\n");
+		break;
 	    case 5:
-			printf("\n##############################################\n\n");
-			pop();
-			printf("\n##############################################\n");
-			break;
+		printf("\n##############################################\n\n");
+		pop();
+		printf("\n##############################################\n");
+		break;
 	    case 6:
-			printf("Exiting....");
-			break;
+		printf("Exiting....");
+		break;
 	    default:
-			printf("Invalid choice\n");
-			break;
+		printf("Invalid choice\n");
+		break;
 	}
     } while(ch!=6);
 }
