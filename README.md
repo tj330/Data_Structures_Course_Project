@@ -23,9 +23,10 @@ Key Functions:
     pop: Removes all completed tasks from the stack.
     getDate: Gets the current date and time.
 
-
-
-
+Screenshots:<br/>
+![image alt](https://github.com/tj330/Data_Structures_Course_Project/blob/main/Image1.jpg?raw=true)
+![image alt](https://github.com/tj330/Data_Structures_Course_Project/blob/main/Image2.jpg?raw=true)
+![image alt](https://github.com/tj330/Data_Structures_Course_Project/blob/main/Image3.jpg?raw=true)
 
 
 
